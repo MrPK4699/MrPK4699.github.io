@@ -13,7 +13,7 @@
   --second-color: #0e2431;
 }
 
-/* resume-link-1 */
+/* skills-icon */
 :root {
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
@@ -286,7 +286,7 @@ section.about {
 .skills-text {
   margin-bottom: var(--mb-4);
 }
-.skills-data {
+.skills-card {
   margin: auto;
   background-color: white;
   width: 400px;
@@ -300,7 +300,7 @@ section.about {
   border-radius: 0.5rem;
   box-shadow: 0 4px 25px rgba(14, 36, 49, 0.15);
 }
-.skills-icon {
+.skills-card-img {
   width: 2rem;
   font-size: 2rem;
   margin-right: var(--mb-2);
