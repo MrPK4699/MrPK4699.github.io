@@ -13,7 +13,7 @@
   --second-color: #0e2431;
 }
 
-/* skills-icon */
+/* home-img */
 :root {
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
@@ -231,7 +231,7 @@ img {
 .footer-icon:hover {
   color: var(--first-color);
 }
-.home-img {
+.home-imgs {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -353,18 +353,18 @@ img.man-icons {
   width: 80%;
   margin: auto;
 }
-.project-img {
+.project-card {
   background: white;
   box-shadow: 0 4px 25px rgba(14, 36, 49, 0.15);
   border-radius: 0.5rem;
   overflow: hidden;
 }
-.project-img img {
+.project-img {
   transition: 1s;
   cursor: pointer;
   margin-bottom: 0.5rem;
 }
-.project-img img:hover {
+.project-img  {
   transform: scale(1.1);
 }
 .project-container p {
@@ -491,7 +491,7 @@ img.man-icons {
     margin-bottom: 0;
     margin-right: var(--mb-4);
   }
-  .home-img {
+  .home-imgs {
     width: 35%;
     max-width: 420px;
     bottom: 15%;
@@ -549,7 +549,7 @@ img.man-icons {
     margin-left: auto;
     margin-right: auto;
   }
-  .home-img {
+  .home-imgs {
     right: 10%;
     top: 20%;
   }
