@@ -1,5 +1,5 @@
 /*===== GOOGLE FONT =====*/
-/* project */
+/* project  */
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"); */
 /*===== VARIABLES CSS =====*/
 :root {
@@ -13,7 +13,7 @@
   --second-color: #0e2431;
 }
 
-
+/* resume-link-1 */
 :root {
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
@@ -156,7 +156,7 @@ img {
   color: #fff;
 }
 
-#resume-link-1{
+#resume-button-1{
   background-color:white ;
   color:#0e2431;
   padding: 10px;
