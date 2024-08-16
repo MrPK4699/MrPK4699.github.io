@@ -1,5 +1,6 @@
 // components/About.js
 import { FileDownload } from 'tabler-icons-react';
+import Image from 'next/image';
 
 
 const About = () => (
@@ -10,7 +11,7 @@ const About = () => (
       <br/>
       <div className="row">
         <div className="col-lg-3  d-flex justify-content-center p-2">
-          <img className="rounded" src="assets/Pankaj-Khatri-Photo.jpg" alt="PK" width='270px'/>
+          <Image className="rounded" src="assets/Pankaj-Khatri-Photo.jpg" alt="PK" width='270px'/>
         </div>
         <div className="col-lg-9 text-center ">
           <p className="text-black mb-4 mx-3" style={{"word-spacing": "0.2rem"}}>Dynamic Full Stack Web Developer with a passion for creating

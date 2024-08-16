@@ -29,7 +29,7 @@ const Contact = () => {
       <div className="container px-4 px-lg-5">
         <div className="row gx-4 gx-lg-5 justify-content-center">
           <div className="col-lg-8 col-xl-6 text-center">
-            <h2 className="mt-0">Let's Get In Touch!</h2>
+            <h2 className="mt-0">Let&apos;s Get In Touch!</h2>
             <hr className="divider" />
             <p className="text-muted mb-3">Ready to start your next project with me? Send me a message and I will get back to you as soon as possible!</p>
           </div>

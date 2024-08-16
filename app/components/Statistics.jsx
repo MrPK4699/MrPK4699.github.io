@@ -1,4 +1,5 @@
 // components/Skills.js
+import Image from 'next/image';
 
 const Statistics = () => (
   <section className="page-section" id="statistics">
@@ -8,21 +9,21 @@ const Statistics = () => (
       
       <div id="githubCommits" className="row">
         <div className="react-activity-calendar my-2 shadow-lg" data-aos="zoom-in">
-          <img style={{width: "100%" , margin: "auto"}} src="https://ghchart.rshah.org/MrPK4699" alt=" Github chart" />
+          <Image style={{width: "100%" , margin: "auto"}} src="https://ghchart.rshah.org/MrPK4699" alt=" Github chart" />
         </div>
 
         <div className="github-stats d-flex flex-wrap justify-content-around" data-aos="zoom-in">
           <div className="github-subdiv1 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-streak-stats " data-aos="zoom-in"
+            <Image className="github-streak-stats " data-aos="zoom-in"
               src="https://github-readme-streak-stats.herokuapp.com/?user=MrPK4699&" alt="MrPK4699-github-stats" />
           </div>
           <div className="github-subdiv2 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-stats-card " data-aos="zoom-in"
+            <Image className="github-stats-card " data-aos="zoom-in"
               src="https://github-readme-stats.vercel.app/api?username=MrPK4699&show_icons=true&locale=en"
               alt="MrPK4699-github-subdiv2" />
           </div>
           <div className="github-subdiv3 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-top-card " data-aos="zoom-in"
+            <Image className="github-top-card " data-aos="zoom-in"
               src="https://github-readme-stats.vercel.app/api/top-langs?username=MrPK4699&show_icons=true&locale=en&layout=compact"
               alt="MrPK4699 github-subdiv3" />
           </div>
