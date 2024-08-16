@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "next",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    // Add any project-specific rules here
+  }
+}
