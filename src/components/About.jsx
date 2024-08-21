@@ -22,7 +22,7 @@ const About = () => (
             skills. Proficient with skills required for engaging with a team for developing a
             project. Will love to contribute in Open Source Projects.
           </p>
-          <a className="btn btn-light btn-md icon-btn" href="#services"> <FileDownload  strokeWidth={2} /> Resume</a>
+          <a className="btn btn-light btn-md icon-btn" href="assets/PankajKhatri-FullStackWebDeveloper.pdf" download="" target="_blank" > <FileDownload  strokeWidth={2} /> Resume</a>
         </div>
         
       </div>

@@ -34,7 +34,7 @@ const Projects = () => {
               <h2 className='project-name text-center'>{ele.title}</h2>
               <div className='d-lg-flex justify-content-between  align-items-center'>
                 <div className=' m-3'>
-                  <img className="img-fluid" src={`assets/${ele.title}.png`} alt={ele.title} />
+                  <img className="img-fluid" src={`assets/projects-imgs/${ele.title}.png`} alt={ele.title} />
                 </div>
                 <div className='project-box-caption text-center' >
                   <p className='project-details text-black'>{ele.description}</p>
