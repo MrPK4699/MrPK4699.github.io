@@ -17,6 +17,13 @@ const myprojects=[
     techStack : 'HTML | CSS | JavaScript | Git | JSON Server',
     github : 'https://github.com/DivYam062/eCommerceGreenParadise',
     deployedUrl : 'https://656cbd8b78668a2ac47fd273--jolly-kitten-c781a7.netlify.app/index.html',
+  },
+  {
+    title: 'Task Manager',
+    description : 'Task Manager App is a web application designed to help users manage their tasks effectively. Here you can easily prioritize tasks, set deadlines, and track progress—all in one convenient location.',
+    techStack : 'React | MongoDb | ExpressJs | NodeJs | Git',
+    github : 'https://github.com/MrPK4699/TaskManagement_MERN',
+    deployedUrl : 'https://task-management-mern-eqkt.vercel.app/',
   }
 ]
 
