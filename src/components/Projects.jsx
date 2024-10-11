@@ -8,8 +8,8 @@ const myprojects=[
     title: 'Myntra',
     description : 'Myntra is a major Indian fashion e-commerce company headquartered in Bengaluru, Karnataka, India. The company was founded in 2007 to sell personalized gift items. A collaborative project, built in 6 days by a team of 5 developers',
     techStack : 'HTML | CSS | JavaScript | Git',
-    github : 'https://github.com/novitafinisher/Myntra-Project',
-    deployedUrl : 'https://saurav01myntra.netlify.app/',
+    github : 'https://github.com/MrPK4699/Myntra-Project',
+    deployedUrl : 'https://lighthearted-haupia-f78f70.netlify.app/',
   },
   {
     title: 'Green Paradise',
@@ -47,8 +47,8 @@ const Projects = () => {
                   <p className='project-details text-black'>{ele.description}</p>
                   <p className=''>{ele.techStack}</p>
                   <div className='project-links d-flex justify-content-between'>
-                  <a className="btn btn-light btn-md icon-btn" href={ele.deployedUrl}>Go Live<PlayerPlay  strokeWidth={2} /></a>
-                  <a className="btn btn-light btn-md icon-btn" href={ele.github}>Code <BrandGithub  strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn" target='blank' href={ele.deployedUrl}>Go Live<PlayerPlay  strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn" target='blank' href={ele.github}>Code <BrandGithub  strokeWidth={2} /></a>
                   </div>
                 </div>
               </div>

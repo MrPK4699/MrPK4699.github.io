@@ -19,7 +19,26 @@ const Navbar = () => (
           <li className="nav-item my-auto"><a className="nav-link" href="#project">Projects</a></li>
           <li className="nav-item my-auto"><a className="nav-link" href="#statistics">Statistics</a></li>
           <li className="nav-item my-auto"><a className="nav-link" href="#contact">Contact</a></li>
-          <li className="nav-item my-auto"><a className="icon-btn btn btn-light btn-md shadow-lg"  href="assets/PankajKhatri-FullStackWebDeveloper.pdf" download="" target="_blank" > <FileDownload  strokeWidth={2} /> Resume</a>
+          <li className="nav-item my-auto">
+            <a 
+              className="icon-btn btn btn-light btn-md shadow-lg"  
+              href="assets/PankajKhatri-FullStackWebDeveloper.pdf" 
+              target="_blank" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.open("assets/PankajKhatri-FullStackWebDeveloper.pdf", "_blank");
+                setTimeout(() => {
+                  const link = document.createElement("a");
+                  link.href = "assets/PankajKhatri-FullStackWebDeveloper.pdf";
+                  link.download = "PankajKhatri-FullStackWebDeveloper.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }, 1000); // delay to give the new tab time to load
+              }} 
+            > 
+              <FileDownload  strokeWidth={2} /> Resume
+            </a>
           </li>
         </ul>
       </div>

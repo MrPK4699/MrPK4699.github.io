@@ -22,7 +22,25 @@ const About = () => (
             skills. Proficient with skills required for engaging with a team for developing a
             project. Will love to contribute in Open Source Projects.
           </p>
-          <a className="btn btn-light btn-md icon-btn" href="assets/PankajKhatri-FullStackWebDeveloper.pdf" download="" target="_blank" > <FileDownload  strokeWidth={2} /> Resume</a>
+          <a 
+            className="btn btn-light btn-md icon-btn" 
+            href="assets/PankajKhatri-FullStackWebDeveloper.pdf" 
+            target="blank"  
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("assets/PankajKhatri-FullStackWebDeveloper.pdf", "_blank");
+              setTimeout(() => {
+                const link = document.createElement("a");
+                link.href = "assets/PankajKhatri-FullStackWebDeveloper.pdf";
+                link.download = "PankajKhatri-FullStackWebDeveloper.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }, 1000); // delay to give the new tab time to load
+            }} 
+          >  
+            <FileDownload  strokeWidth={2} /> Resume
+          </a>
         </div>
         
       </div>
