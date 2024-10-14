@@ -29,7 +29,7 @@ const myprojects=[
 
 const Projects = () => {
   return (
-    <section className="page-section" id="project">
+    <section className="page-section" id="projects">
       <div className="container">
         <h2 className="text-center">My Projects</h2>
         <hr className="divider" />
@@ -37,18 +37,18 @@ const Projects = () => {
 
 
           {myprojects.map((ele, i) => (
-            <div className='project-box shadow-lg m-auto p-3 my-3' key={i}>
-              <h2 className='project-name text-center'>{ele.title}</h2>
+            <div className='project-box shadow-lg m-auto p-3 my-3 project-card' key={i}>
+              <h2 className='project-name text-center project-title'>{ele.title}</h2>
               <div className='d-lg-flex justify-content-between  align-items-center'>
                 <div className=' m-3'>
-                  <img className="img-fluid" src={`assets/projects-imgs/${ele.title}.png`} alt={ele.title} />
+                  <img className="img-fluid project-img" src={`assets/projects-imgs/${ele.title}.png`} alt={ele.title} />
                 </div>
                 <div className='project-box-caption text-center' >
-                  <p className='project-details text-black'>{ele.description}</p>
+                  <p className='project-details text-black project-description'>{ele.description}</p>
                   <p className=''>{ele.techStack}</p>
                   <div className='project-links d-flex justify-content-between'>
-                  <a className="btn btn-light btn-md icon-btn" target='blank' href={ele.deployedUrl}>Go Live<PlayerPlay  strokeWidth={2} /></a>
-                  <a className="btn btn-light btn-md icon-btn" target='blank' href={ele.github}>Code <BrandGithub  strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn project-deployed-link" target='blank' href={ele.deployedUrl}>Go Live<PlayerPlay  strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn project-github-link" target='blank' href={ele.github}>Code <BrandGithub  strokeWidth={2} /></a>
                   </div>
                 </div>
               </div>

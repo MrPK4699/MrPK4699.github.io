@@ -13,13 +13,13 @@ const Skills = () => (
 
         {
           mySkills.map((ele,i)=>(
-            <div className="col-lg-2 col-sm-3 col-4 text-center " key={i}>
+            <div className="col-lg-2 col-sm-3 col-4 text-center skills-card" key={i}>
               <div className="shadow-lg mt-lg-5 mt-4 py-3 rounded-4 fs-6">
-                <div className="mb-2 rotate-y">
-                    <img src={`assets/tech-imgs/${ele}.png`} alt={ele} width={'40px'}/>
+                <div className="mb-2 rotate-y ">
+                    <img className="skills-card-img" src={`assets/tech-imgs/${ele}.png`} alt={ele} width={'40px'}/>
                 </div>
                 {/* <h3 className="h4 mb-2">{ele}</h3> */}
-                <p className="text-muted mb-0">{ele}</p>
+                <p className="text-muted mb-0 skills-card-name">{ele}</p>
               </div>
             </div>
           ))

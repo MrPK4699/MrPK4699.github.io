@@ -52,7 +52,7 @@ const Contact = () => {
               <div className="form-floating mb-3">
                 <input 
                   className="form-control" 
-                  id="contact" 
+                  id="contactNumber" 
                   type="tel" 
                   placeholder="(123) 456-7890" 
                   value={formData.contact}

@@ -15,16 +15,16 @@ const Statistics = () => (
 
         <div className="github-stats d-flex flex-wrap justify-content-around" data-aos="zoom-in">
           <div className="github-subdiv1 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-streak-stats " data-aos="zoom-in"
+            <img className="github-streak-stats " data-aos="zoom-in" id="github-streak-stats" 
               src="https://github-readme-streak-stats.herokuapp.com/?user=MrPK4699&" alt="MrPK4699-github-stats" />
           </div>
           <div className="github-subdiv2 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-stats-card " data-aos="zoom-in"
+            <img className="github-stats-card " data-aos="zoom-in" id="github-stats-card" 
               src="https://github-readme-stats.vercel.app/api?username=MrPK4699&show_icons=true&locale=en"
               alt="MrPK4699-github-subdiv2" />
           </div>
           <div className="github-subdiv3 my-2 shadow-lg" data-aos="zoom-in">
-            <img className="github-top-card " data-aos="zoom-in"
+            <img className="github-top-card " data-aos="zoom-in" id="github-top-langs" 
               src="https://github-readme-stats.vercel.app/api/top-langs?username=MrPK4699&show_icons=true&locale=en&layout=compact"
               alt="MrPK4699 github-subdiv3" />
           </div>
