@@ -1,64 +1,78 @@
-// components/Projects.js
+import { FaGithub } from 'react-icons/fa';
+import { LuArrowUpRight, LuExternalLink } from 'react-icons/lu';
+import { profile, projects } from '../data/portfolio';
+import Reveal from './Reveal';
+import Section from './Section';
 
-import React from 'react'
-import { BrandGithub, PlayerPlay } from 'tabler-icons-react';
-
-const myprojects=[
-  {
-    title: 'Myntra',
-    description : 'Myntra is a major Indian fashion e-commerce company headquartered in Bengaluru, Karnataka, India. The company was founded in 2007 to sell personalized gift items. A collaborative project, built in 6 days by a team of 5 developers',
-    techStack : 'HTML | CSS | JavaScript | Git',
-    github : 'https://github.com/MrPK4699/Myntra-Project',
-    deployedUrl : 'https://lighthearted-haupia-f78f70.netlify.app/',
-  },
-  {
-    title: 'Green Paradise',
-    description : 'Green Paradise is a fully functional e-commerce website designed for plant enthusiasts. It offers a wide variety of plants and gardening supplies, making it easy for users to browse, select, and purchase their favorite plants online.',
-    techStack : 'HTML | CSS | JavaScript | Git | JSON Server',
-    github : 'https://github.com/DivYam062/eCommerceGreenParadise',
-    deployedUrl : 'https://656cbd8b78668a2ac47fd273--jolly-kitten-c781a7.netlify.app/index.html',
-  },
-  {
-    title: 'Task Manager',
-    description : 'Task Manager App is a web application designed to help users manage their tasks effectively. Here you can easily prioritize tasks, set deadlines, and track progress—all in one convenient location.',
-    techStack : 'React | MongoDb | ExpressJs | NodeJs | Git',
-    github : 'https://github.com/MrPK4699/TaskManagement_MERN',
-    deployedUrl : 'https://task-management-mern-eqkt.vercel.app/',
-  }
-]
-
-const Projects = () => {
+export default function Projects() {
   return (
-    <section className="page-section" id="projects">
-      <div className="container">
-        <h2 className="text-center">My Projects</h2>
-        <hr className="divider" />
-        <div className="row my-3 mx-2">
-
-
-          {myprojects.map((ele) => (
-            <div className='project-box shadow-lg m-auto p-3 my-3 project-card' key={ele.title}>
-              <h2 className='project-name text-center project-title'>{ele.title}</h2>
-              <div className='d-lg-flex justify-content-between  align-items-center'>
-                <div className=' m-3'>
-                  <img className="img-fluid project-img" src={`assets/projects-imgs/${encodeURIComponent(ele.title)}.png`} alt={`${ele.title} screenshot`} loading="lazy" />
-                </div>
-                <div className='project-box-caption text-center' >
-                  <p className='project-details text-black project-description'>{ele.description}</p>
-                  <p className=''>{ele.techStack}</p>
-                  <div className='project-links d-flex justify-content-between'>
-                  <a className="btn btn-light btn-md icon-btn project-deployed-link" target="_blank" rel="noopener noreferrer" href={ele.deployedUrl}>Go Live <PlayerPlay strokeWidth={2} /></a>
-                  <a className="btn btn-light btn-md icon-btn project-github-link" target="_blank" rel="noopener noreferrer" href={ele.github}>Code <BrandGithub strokeWidth={2} /></a>
-                  </div>
-                </div>
+    <Section
+      id="projects"
+      eyebrow="Projects"
+      title="Things I've built"
+      intro="A few projects I've designed, built and shipped, solo and as part of a team."
+    >
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p, i) => (
+          <Reveal
+            as="article"
+            key={p.title}
+            delay={i * 100}
+            className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10"
+          >
+            <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-surface-2">
+              <img
+                src={encodeURI(p.image)}
+                alt={`Screenshot of ${p.title}`}
+                loading="lazy"
+                className="size-full object-cover object-top transition duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-1 flex-col p-6">
+              <h3 className="font-display text-xl font-bold text-fg">{p.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{p.description}</p>
+              <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Tech stack">
+                {p.tech.map((t) => (
+                  <li key={t} className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex gap-3">
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition hover:opacity-90"
+                >
+                  Live demo <LuExternalLink className="size-4" aria-hidden="true" />
+                  <span className="sr-only"> of {p.title}</span>
+                </a>
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold text-fg transition hover:border-accent hover:text-accent"
+                >
+                  <FaGithub className="size-4" aria-hidden="true" /> Code
+                  <span className="sr-only"> for {p.title}</span>
+                </a>
               </div>
             </div>
-          ))}
-        </div>
+          </Reveal>
+        ))}
       </div>
-    </section>
-  )
+
+      <Reveal className="mt-8 text-center">
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-semibold text-fg transition hover:border-accent hover:text-accent"
+        >
+          More on GitHub <LuArrowUpRight className="size-4" aria-hidden="true" />
+        </a>
+      </Reveal>
+    </Section>
+  );
 }
-
-export default Projects
-
