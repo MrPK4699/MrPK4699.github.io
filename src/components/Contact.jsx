@@ -6,21 +6,28 @@ import { useState } from 'react';
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    contact: '',
+    email: '',
+    phone: '',
+    subject: '',
     message: ''
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:pankajkhatri4698@example.com?subject=Contact%20Form%20Submission&body=Name: ${encodeURIComponent(formData.name)}%0D%0AContact: ${encodeURIComponent(formData.contact)}%0D%0AMessage: ${encodeURIComponent(formData.message)}`;
-    window.location.href = mailtoLink;
+    const { name, email, phone, subject, message } = formData;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone || '-'}`,
+      '',
+      message,
+    ].join('\r\n');
+    window.location.href = `mailto:4699pankajkhatri@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -49,16 +56,49 @@ const Contact = () => {
                 />
                 <label htmlFor="name">Full name</label>
               </div>
+              <div className="row g-3 mb-3">
+                <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      className="form-control"
+                      id="email"
+                      type="email"
+                      placeholder="name@example.com"
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                    <label htmlFor="email">Email address</label>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      className="form-control"
+                      id="phone"
+                      type="tel"
+                      placeholder="(123) 456-7890"
+                      autoComplete="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="phone">Contact number (optional)</label>
+                  </div>
+                </div>
+              </div>
               <div className="form-floating mb-3">
-                <input 
-                  className="form-control" 
-                  id="contactNumber" 
-                  type="tel" 
-                  placeholder="(123) 456-7890" 
-                  value={formData.contact}
+                <input
+                  className="form-control"
+                  id="subject"
+                  type="text"
+                  placeholder="What is this about?"
+                  maxLength={120}
+                  value={formData.subject}
                   onChange={handleChange}
+                  required
                 />
-                <label htmlFor="contact">Contact</label>
+                <label htmlFor="subject">Subject</label>
               </div>
               <div className="form-floating mb-3">
                 <textarea 
@@ -73,7 +113,7 @@ const Contact = () => {
                 <label htmlFor="message">Message</label>
               </div>
               <div className="d-grid">
-                <button className="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
+                <button className="btn btn-xl btn-theme" id="submitButton" type="submit">Send</button>
               </div>
             </form>
           </div>
