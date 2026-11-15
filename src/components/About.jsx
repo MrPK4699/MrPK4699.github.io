@@ -12,7 +12,7 @@ const About = () => (
       <br/>
       <div className="row">
         <div className="col-lg-3  d-flex justify-content-center p-2">
-          <img className="rounded home-img" src="assets/Pankaj-Khatri-Photo.jpg" alt="PK" width='270px'/>
+          <img className="rounded home-img" src="assets/Pankaj-Khatri-Photo.jpg" alt="Pankaj Khatri" width="270" loading="lazy" />
         </div>
         <div className="col-lg-9 text-center ">
           <p className="text-black mb-4 mx-3" style={{"wordSpacing": "0.2rem"}} id="user-detail-intro">Dynamic Full Stack Web Developer with a passion for creating
@@ -25,19 +25,8 @@ const About = () => (
           <a 
             className="btn btn-light btn-md icon-btn" 
             href="assets/PankajKhatri-FullStackWebDeveloper.pdf" 
-            target="blank"  
-            onClick={(e) => {
-              e.preventDefault();
-              window.open("assets/PankajKhatri-FullStackWebDeveloper.pdf", "_blank");
-              setTimeout(() => {
-                const link = document.createElement("a");
-                link.href = "assets/PankajKhatri-FullStackWebDeveloper.pdf";
-                link.download = "PankajKhatri-FullStackWebDeveloper.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }, 1000); // delay to give the new tab time to load
-            }} 
+            target="_blank"
+            rel="noopener noreferrer"
             id='resume-button-2'
           >  
             <FileDownload  strokeWidth={2} /> Resume

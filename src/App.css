@@ -5,36 +5,21 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 /* custom styling */
 
 .txt-primary{
   color: #f4623a;
+}
+
+/* Theme-coloured button (Bootstrap's btn-primary is blue) */
+.btn-theme {
+  color: #fff;
+  background-color: #f4623a;
+}
+.btn-theme:hover,
+.btn-theme:focus-visible {
+  color: #fff;
+  background-color: #d9532f;
 }
 
 .page-section {
@@ -193,14 +178,36 @@ header.masthead h1, header.masthead .h1 {
   max-width:400px;
 }
 
-.github-stats img{
-  width: 100%;
-  /* min-width: 300px; */
+/* GitHub stats: one row when they fit, wrap when they don't.
+   Each card grows in proportion to its image's aspect ratio (--ratio = width / height),
+   so cards sharing a row always end up the same height. */
+.github-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
-.github-stats div{
+.github-stat-card {
+  flex: var(--ratio) 1 0;
+  min-width: var(--min-w, 240px);
+  max-width: var(--max-w, 400px);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.github-stat-card img {
+  display: block;
   width: 100%;
-  max-width: 400px;
+  height: auto;
+}
+
+@media (max-width: 575.98px) {
+  .github-stat-card {
+    min-width: 100%;
+  }
 }
 
 .social-contact .mx-2 .btn{

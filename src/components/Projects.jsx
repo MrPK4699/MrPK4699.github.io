@@ -36,19 +36,19 @@ const Projects = () => {
         <div className="row my-3 mx-2">
 
 
-          {myprojects.map((ele, i) => (
-            <div className='project-box shadow-lg m-auto p-3 my-3 project-card' key={i}>
+          {myprojects.map((ele) => (
+            <div className='project-box shadow-lg m-auto p-3 my-3 project-card' key={ele.title}>
               <h2 className='project-name text-center project-title'>{ele.title}</h2>
               <div className='d-lg-flex justify-content-between  align-items-center'>
                 <div className=' m-3'>
-                  <img className="img-fluid project-img" src={`assets/projects-imgs/${ele.title}.png`} alt={ele.title} />
+                  <img className="img-fluid project-img" src={`assets/projects-imgs/${encodeURIComponent(ele.title)}.png`} alt={`${ele.title} screenshot`} loading="lazy" />
                 </div>
                 <div className='project-box-caption text-center' >
                   <p className='project-details text-black project-description'>{ele.description}</p>
                   <p className=''>{ele.techStack}</p>
                   <div className='project-links d-flex justify-content-between'>
-                  <a className="btn btn-light btn-md icon-btn project-deployed-link" target='blank' href={ele.deployedUrl}>Go Live<PlayerPlay  strokeWidth={2} /></a>
-                  <a className="btn btn-light btn-md icon-btn project-github-link" target='blank' href={ele.github}>Code <BrandGithub  strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn project-deployed-link" target="_blank" rel="noopener noreferrer" href={ele.deployedUrl}>Go Live <PlayerPlay strokeWidth={2} /></a>
+                  <a className="btn btn-light btn-md icon-btn project-github-link" target="_blank" rel="noopener noreferrer" href={ele.github}>Code <BrandGithub strokeWidth={2} /></a>
                   </div>
                 </div>
               </div>

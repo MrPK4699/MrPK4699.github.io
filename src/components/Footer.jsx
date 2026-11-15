@@ -23,14 +23,14 @@ const Footer = () => (
                         </a>
                     </div>
                     <div className='mx-2'>
-                        <a href="mailto:4699pankajkhatri@gmail.com" target="_blank" rel="noopener noreferrer" className="btn m-2 m-sm-1" id="contact-email">
+                        <a href="mailto:4699pankajkhatri@gmail.com" className="btn m-2 m-sm-1" id="contact-email">
                             <Mail />
                             <br/>
                             E-mail
                         </a>
                     </div>
                     <div className='mx-2'>
-                        <a href="tel:+91 7617434304" target="_blank" rel="noopener noreferrer" className="btn m-2 m-sm-1" id="contact-phone">
+                        <a href="tel:+917617434304" className="btn m-2 m-sm-1" id="contact-phone">
                             <Phone />
                             <br/>
                             Phone
