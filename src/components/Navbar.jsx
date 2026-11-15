@@ -1,91 +1,111 @@
-// components/Navbar.jsx
+import { useEffect, useState } from 'react';
+import { LuDownload, LuMenu, LuX } from 'react-icons/lu';
+import { navLinks, profile } from '../data/portfolio';
+import { useActiveSection } from '../hooks/useActiveSection';
+import ThemeSwitcher from './ThemeSwitcher';
 
-import React, { useEffect, useRef, useState } from 'react';
-import Collapse from 'bootstrap/js/dist/collapse';
-import ScrollSpy from 'bootstrap/js/dist/scrollspy';
-import { FileDownload } from 'tabler-icons-react';
+const sectionIds = navLinks.map((l) => l.id);
 
-const RESUME_URL = 'assets/PankajKhatri-FullStackWebDeveloper.pdf';
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const active = useActiveSection(sectionIds);
 
-const navItems = [
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'statistics', label: 'Statistics' },
-  { id: 'contact', label: 'Contact' },
-];
-
-const Navbar = () => {
-  const [shrink, setShrink] = useState(false);
-  const togglerRef = useRef(null);
-  const menuRef = useRef(null);
-
-  // Solid navbar once the page is scrolled
   useEffect(() => {
-    const onScroll = () => setShrink(window.scrollY > 0);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
-    document.addEventListener('scroll', onScroll, { passive: true });
-    return () => document.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Highlight the nav link of the section currently in view
+  // Close the mobile menu when switching to desktop width
   useEffect(() => {
-    if (!('IntersectionObserver' in window)) return undefined;
-    const spy = new ScrollSpy(document.body, {
-      target: '#mainNav',
-      rootMargin: '0px 0px -40%',
-    });
-    return () => spy.dispose();
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = () => mq.matches && setMenuOpen(false);
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
   }, []);
 
-  // On mobile, close the menu after a link is tapped
-  const closeMobileMenu = () => {
-    const toggler = togglerRef.current;
-    if (toggler && window.getComputedStyle(toggler).display !== 'none' && menuRef.current) {
-      Collapse.getOrCreateInstance(menuRef.current, { toggle: false }).hide();
-    }
-  };
+  const solid = scrolled || menuOpen;
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light fixed-top py-3${shrink ? ' navbar-shrink' : ''}`} id="mainNav">
-      <div className="container px-lg-5" id="nav-menu">
-        <img src="assets/Pankaj-Khatri-Photo.jpg" className="rounded-circle" width="40" height="40" alt="Pankaj Khatri" />
-        <a className="mx-2 navbar-brand home" href="#home" onClick={closeMobileMenu}>Pankaj Khatri</a>
-        <button
-          ref={togglerRef}
-          className="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i className="bi-list"></i>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive" ref={menuRef}>
-          <ul className="navbar-nav ms-auto my-2 my-lg-0">
-            {navItems.map(({ id, label }) => (
-              <li className="nav-item my-auto" key={id}>
-                <a className={`nav-link ${id}`} href={`#${id}`} onClick={closeMobileMenu}>{label}</a>
-              </li>
-            ))}
-            <li className="nav-item my-auto">
+    <header
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+        solid ? 'border-b border-line bg-bg/80 backdrop-blur-xl' : 'border-b border-transparent'
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6" aria-label="Main">
+        <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold text-fg" onClick={() => setMenuOpen(false)}>
+          <img src={profile.photo} alt="" width="36" height="36" className="size-9 rounded-full object-cover ring-2 ring-accent/60" />
+          <span>{profile.name}</span>
+        </a>
+
+        <ul className="ml-auto hidden items-center gap-1 md:flex">
+          {navLinks.map(({ id, label }) => (
+            <li key={id}>
               <a
-                className="icon-btn btn btn-light btn-md shadow-lg"
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="resume-button-1"
+                href={`#${id}`}
+                aria-current={active === id ? 'true' : undefined}
+                className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                  active === id ? 'bg-accent/15 text-accent' : 'text-muted hover:text-fg'
+                }`}
               >
-                <FileDownload strokeWidth={2} /> Resume
+                {label}
               </a>
             </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-};
+          ))}
+        </ul>
 
-export default Navbar;
+        <div className="ml-auto flex items-center gap-2 md:ml-2">
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-on-accent transition hover:opacity-90 sm:inline-flex"
+          >
+            <LuDownload className="size-4" aria-hidden="true" /> Resume
+          </a>
+          <ThemeSwitcher />
+          <button
+            type="button"
+            className="grid size-10 place-items-center rounded-full border border-line bg-surface/70 text-fg md:hidden"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            {menuOpen ? <LuX className="size-5" /> : <LuMenu className="size-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div id="mobile-menu" className="border-t border-line px-4 pb-5 pt-2 md:hidden">
+          <ul className="flex flex-col">
+            {navLinks.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                  className={`block rounded-xl px-3 py-3 text-base font-medium ${
+                    active === id ? 'bg-accent/15 text-accent' : 'text-fg hover:bg-surface-2'
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-on-accent"
+          >
+            <LuDownload className="size-4" aria-hidden="true" /> Download resume
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}

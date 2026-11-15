@@ -1,45 +1,35 @@
-// components/Header.js
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { LuMail } from 'react-icons/lu';
+import { profile } from '../data/portfolio';
 
-import React from 'react';
-import { BrandGithub, BrandLinkedin, Mail, Phone } from 'tabler-icons-react';
+const links = [
+  { label: 'GitHub', href: profile.github, icon: FaGithub },
+  { label: 'LinkedIn', href: profile.linkedin, icon: FaLinkedin },
+  { label: 'Email', href: `mailto:${profile.email}`, icon: LuMail },
+];
 
-const Footer = () => (
-    <footer className="bg-black">
-        <div className="container px-4 px-lg-5 h-100">
-            <div className="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                <div className="social-contact d-flex justify-content-center">
-                    <div className='mx-2'>
-                        <a href="https://github.com/MrPK4699" target="_blank" rel="noopener noreferrer" className="btn m-2 m-sm-1" id="contact-github">
-                            <BrandGithub />
-                            <br/>
-                            GitHub Profile
-                        </a>
-                    </div>
-                    <div className='mx-2'>
-                        <a href="https://www.linkedin.com/in/4699pankajkhatri" target="_blank" rel="noopener noreferrer" className="btn m-2 m-sm-1" id="contact-linkedin">
-                            <BrandLinkedin/>
-                            <br/>
-                            LinkedIn
-                        </a>
-                    </div>
-                    <div className='mx-2'>
-                        <a href="mailto:4699pankajkhatri@gmail.com" className="btn m-2 m-sm-1" id="contact-email">
-                            <Mail />
-                            <br/>
-                            E-mail
-                        </a>
-                    </div>
-                    <div className='mx-2'>
-                        <a href="tel:+917617434304" className="btn m-2 m-sm-1" id="contact-phone">
-                            <Phone />
-                            <br/>
-                            Phone
-                        </a>
-                    </div>
-                </div>
-            </div>
+export default function Footer() {
+  return (
+    <footer className="border-t border-line">
+      {/* Extra bottom/right padding keeps the footer clear of the floating back-to-top button */}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 pb-24 pt-10 sm:flex-row sm:justify-between sm:px-6 sm:pb-10 sm:pr-24 xl:pr-6">
+        <p className="text-sm text-muted">
+          © {new Date().getFullYear()} {profile.name}. Built with React &amp; Tailwind CSS.
+        </p>
+        <div className="flex items-center gap-2">
+          {links.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              aria-label={label}
+              className="grid size-10 place-items-center rounded-full text-muted transition hover:bg-surface-2 hover:text-accent"
+            >
+              <Icon className="size-5" aria-hidden="true" />
+            </a>
+          ))}
         </div>
+      </div>
     </footer>
-);
-
-export default Footer;
+  );
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-mode="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pankaj Khatri | Full Stack (MERN) Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Pankaj Khatri, a Full Stack MERN developer. Projects, skills, GitHub stats and contact details."
+    />
+    <meta name="author" content="Pankaj Khatri" />
+    <meta name="theme-color" content="#faf7f2" />
+
+    <!-- Link previews (LinkedIn, WhatsApp, X, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mrpk4699.github.io/" />
+    <meta property="og:title" content="Pankaj Khatri | Full Stack (MERN) Developer" />
+    <meta property="og:description" content="Projects, skills and contact details of Pankaj Khatri, Full Stack MERN developer." />
+    <meta property="og:image" content="https://mrpk4699.github.io/assets/Pankaj-Khatri-Photo.jpg" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/png" href="/assets/PK-favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/PK-favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+
+    <!-- Apply the saved theme before first paint, so there is no flash of the wrong theme.
+         Keep this list in sync with src/theme/themes.js -->
+    <script>
+      (function () {
+        var modes = { paper: 'light', midnight: 'dark', sunset: 'dark', aurora: 'dark', forest: 'dark', daylight: 'light' };
+        var theme;
+        try { theme = localStorage.getItem('pk-theme'); } catch (e) {}
+        if (!modes[theme]) theme = 'paper'; // default for new visitors
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.mode = modes[theme];
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to view this portfolio.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
