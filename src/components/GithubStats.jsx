@@ -67,7 +67,7 @@ export default function GithubStats() {
         </div>
       </Reveal>
 
-      <div className="mt-10 flex flex-wrap justify-center gap-6">
+      <div className="mt-6 flex flex-wrap justify-center gap-6">
         {cards.map(({ id, src, alt, ratio, minW, maxW }, i) => (
           <Reveal
             key={id}

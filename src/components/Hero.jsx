@@ -1,9 +1,9 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { LuArrowRight, LuDownload, LuMail } from 'react-icons/lu';
-import { SiMongodb, SiNodedotjs, SiReact } from 'react-icons/si';
 import { profile } from '../data/portfolio';
 import { useTypewriter } from '../hooks/useTypewriter';
 import Reveal from './Reveal';
+import TechIcon from './TechIcon';
 
 const socials = [
   { label: 'GitHub', href: profile.github, icon: FaGithub },
@@ -15,8 +15,8 @@ export default function Hero() {
   const role = useTypewriter(profile.roles);
 
   return (
-    <section id="home" className="relative flex min-h-svh items-center pb-16 pt-28 sm:pt-32">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.25fr_1fr]">
+    <section id="home" className="relative flex min-h-[92svh] items-center pb-10 pt-24 sm:pt-28">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.25fr_1fr]">
         <div className="text-center lg:text-left">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-sm font-medium text-muted backdrop-blur">
@@ -92,9 +92,9 @@ export default function Hero() {
               className="aspect-square w-full rounded-[calc(2rem-3px)] object-cover"
             />
           </div>
-          <FloatingChip className="-left-4 top-8 sm:-left-8" icon={SiReact} label="React" />
-          <FloatingChip className="-right-3 top-1/2 sm:-right-8" icon={SiNodedotjs} label="Node.js" />
-          <FloatingChip className="-bottom-4 left-8" icon={SiMongodb} label="MongoDB" />
+          <FloatingChip className="-left-4 top-8 sm:-left-8" label="React" />
+          <FloatingChip className="-right-3 top-1/2 sm:-right-8" label="Node.js" />
+          <FloatingChip className="-bottom-4 left-8" label="MongoDB" />
         </Reveal>
       </div>
 
@@ -109,12 +109,12 @@ export default function Hero() {
   );
 }
 
-function FloatingChip({ icon: Icon, label, className }) {
+function FloatingChip({ label, className }) {
   return (
     <span
-      className={`absolute flex items-center gap-2 rounded-full border border-line bg-surface/90 px-3 py-1.5 text-sm font-semibold text-fg shadow-xl shadow-black/20 backdrop-blur ${className}`}
+      className={`absolute flex items-center gap-2 rounded-full border border-line bg-surface/90 py-1 pl-1 pr-3 text-sm font-semibold text-fg shadow-xl shadow-black/20 backdrop-blur ${className}`}
     >
-      <Icon className="size-4 text-accent" aria-hidden="true" />
+      <TechIcon name={label} size="sm" />
       {label}
     </span>
   );

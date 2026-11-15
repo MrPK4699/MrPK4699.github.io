@@ -99,8 +99,10 @@
   color-scheme: light;
 }
 
-/* Paper: minimal warm light, burnt orange (default) */
-:root,
+/* Paper: minimal warm light, burnt orange (default).
+   :where(:root) has zero specificity, so this fallback never overrides
+   another [data-theme] block even though it comes last in the file. */
+:where(:root),
 [data-theme="paper"] {
   --bg: #faf7f2;
   --surface: #ffffff;

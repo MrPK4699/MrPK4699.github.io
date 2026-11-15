@@ -1,18 +1,66 @@
 // All portfolio content in one place: edit text, links, skills and projects here.
 import { FaJava } from 'react-icons/fa';
+import { LuKeyRound } from 'react-icons/lu';
 import {
+  SiAngular,
   SiCss,
   SiExpress,
   SiGit,
+  SiGitlab,
+  SiGithub ,
   SiHtml5,
   SiJavascript,
   SiMantine,
   SiMongodb,
+  SiMui,
+  SiMysql,
+  SiNextdotjs,
   SiNodedotjs,
+  SiPostman,
   SiReact,
   SiRedux,
+  SiSequelize,
+  SiTypescript,
   SiWebflow,
+  SiBootstrap,
 } from 'react-icons/si';
+import { TbApi, TbCodeDots, TbMailFast, TbPlugConnected, TbSignature } from 'react-icons/tb';
+import { VscAzure } from 'react-icons/vsc';
+
+// Every technology with its logo and official brand colour.
+// Logos always keep these colours, whatever theme is selected.
+// Skills without an official logo use a generic icon in a neutral colour.
+export const tech = {
+  HTML: { icon: SiHtml5, color: '#E34F26' },
+  CSS: { icon: SiCss, color: '#663399' },
+  JavaScript: { icon: SiJavascript, color: '#F7DF1E' },
+  TypeScript: { icon: SiTypescript, color: '#3178C6' },
+  React: { icon: SiReact, color: '#61DAFB' },
+  'Next.js': { icon: SiNextdotjs, color: '#000000' },
+  Angular: { icon: SiAngular, color: '#DD0031' },
+  Redux: { icon: SiRedux, color: '#764ABC' },
+  Bootstrap: { icon: SiBootstrap, color: '#007FFF' },
+  'Material UI': { icon: SiMui, color: '#007FFF' },
+  Mantine: { icon: SiMantine, color: '#339AF0' },
+  'Node.js': { icon: SiNodedotjs, color: '#5FA04E' },
+  'Express.js': { icon: SiExpress, color: '#000000' },
+  'REST APIs': { icon: TbApi, color: '#0EA5E9' },
+  Sequelize: { icon: SiSequelize, color: '#52B0E7' },
+  Java: { icon: FaJava, color: '#E76F00' },
+  MongoDB: { icon: SiMongodb, color: '#47A248' },
+  MySQL: { icon: SiMysql, color: '#4479A1' },
+  'Microsoft Azure SSO': { icon: VscAzure, color: '#0078D4' },
+  'Authentication & Authorization': { icon: LuKeyRound, color: '#334155' },
+  'Code Obfuscation': { icon: TbCodeDots, color: '#334155' },
+  'API Integration': { icon: TbPlugConnected, color: '#334155' },
+  'Digio (eSign / KYC)': { icon: TbSignature, color: '#334155' },
+  EmailJS: { icon: TbMailFast, color: '#334155' },
+  Git: { icon: SiGit, color: '#F05032' },
+  GitLab: { icon: SiGitlab, color: '#FC6D26' },
+  GitHub: { icon: SiGithub, color: '#040303' },
+  Postman: { icon: SiPostman, color: '#FF6C37' },
+  Webflow: { icon: SiWebflow, color: '#146EF5' },
+};
 
 export const profile = {
   name: 'Pankaj Khatri',
@@ -41,45 +89,35 @@ export const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
+// Skill names must match keys in `tech` above.
 export const skillGroups = [
   {
     title: 'Frontend',
-    skills: [
-      { name: 'HTML', icon: SiHtml5 },
-      { name: 'CSS', icon: SiCss },
-      { name: 'JavaScript', icon: SiJavascript },
-      { name: 'React', icon: SiReact },
-      { name: 'Redux', icon: SiRedux },
-      { name: 'Mantine', icon: SiMantine },
-    ],
+    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Angular', 'Redux', 'Bootstrap', 'Material UI', 'Mantine'],
   },
   {
     title: 'Backend',
-    skills: [
-      { name: 'Node.js', icon: SiNodedotjs },
-      { name: 'Express.js', icon: SiExpress },
-      { name: 'Java', icon: FaJava },
-    ],
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'Sequelize', 'Java'],
   },
   {
-    title: 'Database',
-    skills: [{ name: 'MongoDB', icon: SiMongodb }],
+    title: 'Databases',
+    skills: ['MongoDB', 'MySQL'],
+  },
+  {
+    title: 'Auth & Security',
+    skills: ['Microsoft Azure SSO', 'Authentication & Authorization', 'Code Obfuscation'],
+  },
+  {
+    title: 'Integrations',
+    skills: ['API Integration', 'Digio (eSign / KYC)', 'EmailJS'],
   },
   {
     title: 'Tools & Platforms',
-    skills: [
-      { name: 'Git', icon: SiGit },
-      { name: 'Webflow', icon: SiWebflow },
-    ],
+    skills: ['Git', 'GitHub', 'GitLab', 'Postman', 'Webflow'],
   },
 ];
 
-export const coreStack = [
-  { name: 'MongoDB', icon: SiMongodb },
-  { name: 'Express.js', icon: SiExpress },
-  { name: 'React', icon: SiReact },
-  { name: 'Node.js', icon: SiNodedotjs },
-];
+export const coreStack = ['MongoDB', 'Express.js', 'React', 'Node.js'];
 
 export const projects = [
   {

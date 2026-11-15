@@ -63,7 +63,7 @@ export default function Projects() {
         ))}
       </div>
 
-      <Reveal className="mt-10 text-center">
+      <Reveal className="mt-8 text-center">
         <a
           href={profile.github}
           target="_blank"

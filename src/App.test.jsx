@@ -34,6 +34,24 @@ test('theme switcher changes and remembers the theme', async () => {
   expect(screen.queryByRole('menu')).not.toBeInTheDocument();
 });
 
+test('every skill has a logo, and logo colours do not change with the theme', async () => {
+  const { skillGroups, tech } = await import('./data/portfolio');
+  for (const name of skillGroups.flatMap((g) => g.skills)) {
+    expect(tech[name], `missing logo for "${name}"`).toBeDefined();
+  }
+
+  const user = userEvent.setup();
+  render(<App />);
+  const skills = document.getElementById('skills');
+  const colours = () => [...skills.querySelectorAll('svg')].map((svg) => svg.style.color);
+  const before = colours();
+  expect(before).toContain('rgb(221, 0, 49)'); // Angular red
+
+  await user.click(screen.getByRole('button', { name: /change theme/i }));
+  await user.click(screen.getByRole('menuitemradio', { name: /midnight/i }));
+  expect(colours()).toEqual(before);
+});
+
 test('contact section has no phone number, and a back-to-top button exists', () => {
   render(<App />);
   expect(screen.queryByText(/76174/)).not.toBeInTheDocument();

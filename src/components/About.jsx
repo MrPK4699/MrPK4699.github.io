@@ -3,6 +3,7 @@ import { LuArrowUpRight, LuFolderGit2, LuLayers } from 'react-icons/lu';
 import { about, coreStack, profile, projects } from '../data/portfolio';
 import Reveal from './Reveal';
 import Section from './Section';
+import TechIcon from './TechIcon';
 
 const card = 'rounded-3xl border border-line bg-surface p-6 sm:p-8 transition hover:border-accent/50';
 
@@ -44,12 +45,12 @@ export default function About() {
           </div>
           <p className="mt-2 font-display text-2xl font-bold text-fg">MERN, end to end</p>
           <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {coreStack.map(({ name, icon: Icon }) => (
+            {coreStack.map((name) => (
               <li
                 key={name}
                 className="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface-2 px-3 py-4 text-sm font-medium text-fg"
               >
-                <Icon className="size-7 text-accent" aria-hidden="true" />
+                <TechIcon name={name} size="lg" />
                 {name}
               </li>
             ))}
