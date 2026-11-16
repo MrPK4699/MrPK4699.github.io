@@ -12,7 +12,8 @@ test('renders the main portfolio sections', () => {
   for (const name of [/developer who cares about the details/i, /technologies i work with/i, /things i've built/i, /activity and stats/i, /let's build something together/i]) {
     expect(screen.getByRole('heading', { name })).toBeInTheDocument();
   }
-  expect(screen.getAllByRole('article')).toHaveLength(3);
+  expect(within(document.getElementById('projects')).getAllByRole('article')).toHaveLength(3);
+  expect(screen.getByRole('heading', { name: /where i've worked/i })).toBeInTheDocument();
 });
 
 test('theme switcher changes and remembers the theme', async () => {
@@ -50,6 +51,46 @@ test('every skill has a logo, and logo colours do not change with the theme', as
   await user.click(screen.getByRole('button', { name: /change theme/i }));
   await user.click(screen.getByRole('menuitemradio', { name: /midnight/i }));
   expect(colours()).toEqual(before);
+});
+
+test('experience shows company, both roles, 5 points and expands to all 8', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const section = document.getElementById('experience');
+  const s = within(section);
+
+  expect(s.getByRole('heading', { name: /where i've worked/i })).toBeInTheDocument();
+  expect(s.getByRole('link', { name: /cashinvoice/i })).toHaveAttribute('href', 'https://www.cashinvoice.in/');
+  expect(s.getByText('Software Developer')).toBeInTheDocument();
+  expect(s.getByText('Junior Full Stack Developer')).toBeInTheDocument();
+  expect(s.getByText(/Feb 2025 – Jan 2026/)).toBeInTheDocument();
+  expect(s.getByText('Current')).toBeInTheDocument();
+  // Overall date range shown beside the timeline dot
+  expect(section.querySelector('[data-timeline-date]')).toHaveTextContent('Feb 2025 – Present');
+  // Durations ("1 yr 10 mos") were removed on purpose
+  expect(s.queryByText(/\d+\s*(yr|mo)s?\b/)).not.toBeInTheDocument();
+  expect(s.queryByText(/TML|ICICI|KVB/)).not.toBeInTheDocument();
+
+  const points = () => section.querySelectorAll('[data-highlight]').length;
+  expect(points()).toBe(5);
+  const toggle = s.getByRole('button', { name: /show 3 more/i });
+  expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await user.click(toggle);
+  expect(points()).toBe(8);
+  expect(s.getByRole('button', { name: /show less/i })).toHaveAttribute('aria-expanded', 'true');
+});
+
+test('hero photo shows calculated experience, skills and projects badges', () => {
+  render(<App />);
+  const badge = (label) => document.querySelector(`[data-stat="${label}"]`);
+  expect(badge('Skills')).toHaveTextContent(/^\d+\+Skills$/);
+  expect(badge('Projects')).toHaveTextContent('3+Projects');
+  expect(document.querySelector('[data-stat$="exp."]')).toHaveTextContent(/^\d+\+(Year|Years|Month|Months) exp\.$/);
+});
+
+test('nav includes an Experience link', () => {
+  render(<App />);
+  expect(screen.getAllByRole('link', { name: 'Experience' })[0]).toHaveAttribute('href', '#experience');
 });
 
 test('contact section has no phone number, and a back-to-top button exists', () => {

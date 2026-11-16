@@ -20,7 +20,7 @@ export default function Navbar() {
 
   // Close the mobile menu when switching to desktop width
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia('(min-width: 1024px)');
     const onChange = () => mq.matches && setMenuOpen(false);
     mq.addEventListener?.('change', onChange);
     return () => mq.removeEventListener?.('change', onChange);
@@ -40,7 +40,7 @@ export default function Navbar() {
           <span>{profile.name}</span>
         </a>
 
-        <ul className="ml-auto hidden items-center gap-1 md:flex">
+        <ul className="ml-auto hidden items-center gap-1 lg:flex">
           {navLinks.map(({ id, label }) => (
             <li key={id}>
               <a
@@ -56,7 +56,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="ml-auto flex items-center gap-2 md:ml-2">
+        <div className="ml-auto flex items-center gap-2 lg:ml-2">
           <a
             href={profile.resume}
             target="_blank"
@@ -68,7 +68,7 @@ export default function Navbar() {
           <ThemeSwitcher />
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full border border-line bg-surface/70 text-fg md:hidden"
+            className="grid size-10 place-items-center rounded-full border border-line bg-surface/70 text-fg lg:hidden"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -80,7 +80,7 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div id="mobile-menu" className="border-t border-line px-4 pb-5 pt-2 md:hidden">
+        <div id="mobile-menu" className="border-t border-line px-4 pb-5 pt-2 lg:hidden">
           <ul className="flex flex-col">
             {navLinks.map(({ id, label }) => (
               <li key={id}>

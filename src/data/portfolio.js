@@ -39,7 +39,7 @@ export const tech = {
   'Next.js': { icon: SiNextdotjs, color: '#000000' },
   Angular: { icon: SiAngular, color: '#DD0031' },
   Redux: { icon: SiRedux, color: '#764ABC' },
-  Bootstrap: { icon: SiBootstrap, color: '#007FFF' },
+  Bootstrap: { icon: SiBootstrap, color: '#7952B3' },
   'Material UI': { icon: SiMui, color: '#007FFF' },
   Mantine: { icon: SiMantine, color: '#339AF0' },
   'Node.js': { icon: SiNodedotjs, color: '#5FA04E' },
@@ -65,7 +65,7 @@ export const tech = {
 export const profile = {
   name: 'Pankaj Khatri',
   shortName: 'PK',
-  roles: ['Full Stack Developer', 'MERN Stack Developer'],
+  roles: ['Software Developer', 'Full Stack Developer', 'MERN Stack Developer'],
   tagline:
     'I build fast, responsive web apps with React, Node.js, Express and MongoDB, from polished interfaces to the APIs behind them.',
   photo: '/assets/Pankaj-Khatri-Photo.jpg',
@@ -83,6 +83,7 @@ export const about = [
 
 export const navLinks = [
   { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'github', label: 'GitHub' },
@@ -118,6 +119,36 @@ export const skillGroups = [
 ];
 
 export const coreStack = ['MongoDB', 'Express.js', 'React', 'Node.js'];
+
+// Work history, newest first. Dates are 'YYYY-MM'; end: null means "Present".
+// `roles` lists titles held at the same company, newest first (promotions).
+// `highlightsShown` = how many points are visible before "Show more".
+// `tech` names must match keys in `tech` above.
+export const experience = [
+  {
+    company: 'Cashinvoice',
+    website: 'https://www.cashinvoice.in/',
+    initials: 'CI',
+    location: 'Remote',
+    type: 'Full-time',
+    roles: [
+      { title: 'Software Developer', start: '2026-02', end: null },
+      { title: 'Junior Full Stack Developer', start: '2025-02', end: '2026-01' },
+    ],
+    highlightsShown: 5,
+    highlights: [
+      'Develop and maintain enterprise CRM applications end to end with Angular, React.js, Node.js, Express.js and MySQL, building business modules and RESTful APIs.',
+      'Implemented Microsoft Azure SSO with MSAL and integrated Microsoft Graph APIs for Outlook email access and AI-powered email processing workflows.',
+      'Built a centralised onboarding system shared by multiple fintech products (Payearly, Tradeasy, CredPulse and TMS), streamlining entity management and onboarding workflows.',
+      'Implemented maker-checker approvals with multi-level authorization, role-based access control, validation and automated email notifications.',
+      'Integrated third-party financial services, including Digio eSign/KYC, CredPulse APIs and banking integrations with multiple partner banks.',
+      'Automated financial data-processing workflows: Excel file validation and filtering, debit adjustments, transaction processing and database operations.',
+      'Migrated an enterprise application from Angular 14 to Angular 20, upgrading dependencies and optimising build configuration while keeping the UI consistent.',
+      'Built interactive Relationship Manager dashboards with React and Material UI showing regional performance, qualified pipeline, open opportunities and business metrics.',
+    ],
+    tech: ['Angular', 'React', 'Node.js', 'Express.js', 'MySQL', 'Sequelize', 'Material UI', 'Microsoft Azure SSO'],
+  },
+];
 
 export const projects = [
   {

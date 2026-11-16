@@ -1,6 +1,7 @@
 import About from './components/About';
 import BackToTop from './components/BackToTop';
 import Contact from './components/Contact';
+import Experience from './components/Experience';
 import Footer from './components/Footer';
 import GithubStats from './components/GithubStats';
 import Hero from './components/Hero';
@@ -26,6 +27,7 @@ export default function App() {
       <main id="main" className="overflow-x-clip">
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
         <GithubStats />

@@ -2,8 +2,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { LuArrowRight, LuDownload, LuMail } from 'react-icons/lu';
 import { profile } from '../data/portfolio';
 import { useTypewriter } from '../hooks/useTypewriter';
+import { experienceStat, projectsStat, skillsStat } from '../utils/stats';
 import Reveal from './Reveal';
-import TechIcon from './TechIcon';
 
 const socials = [
   { label: 'GitHub', href: profile.github, icon: FaGithub },
@@ -92,9 +92,9 @@ export default function Hero() {
               className="aspect-square w-full rounded-[calc(2rem-3px)] object-cover"
             />
           </div>
-          <FloatingChip className="-left-4 top-8 sm:-left-8" label="React" />
-          <FloatingChip className="-right-3 top-1/2 sm:-right-8" label="Node.js" />
-          <FloatingChip className="-bottom-4 left-8" label="MongoDB" />
+          <StatBadge className="-left-4 top-8 sm:-left-10" stat={experienceStat()} />
+          <StatBadge className="-right-3 top-1/2 -translate-y-1/2 sm:-right-10" stat={skillsStat()} />
+          <StatBadge className="-bottom-5 left-8" stat={projectsStat()} />
         </Reveal>
       </div>
 
@@ -109,13 +109,15 @@ export default function Hero() {
   );
 }
 
-function FloatingChip({ label, className }) {
+/** Floating badge on the photo: big number + small label, e.g. "20+ Skills". */
+function StatBadge({ stat, className }) {
   return (
     <span
-      className={`absolute flex items-center gap-2 rounded-full border border-line bg-surface/90 py-1 pl-1 pr-3 text-sm font-semibold text-fg shadow-xl shadow-black/20 backdrop-blur ${className}`}
+      data-stat={stat.label}
+      className={`absolute flex items-center gap-2.5 rounded-2xl border border-line bg-surface/90 px-4 py-2.5 shadow-xl shadow-black/20 backdrop-blur ${className}`}
     >
-      <TechIcon name={label} size="sm" />
-      {label}
+      <span className="font-display text-2xl font-bold leading-none text-gradient">{stat.value}</span>
+      <span className="text-xs font-semibold uppercase leading-tight tracking-wide text-muted">{stat.label}</span>
     </span>
   );
 }
