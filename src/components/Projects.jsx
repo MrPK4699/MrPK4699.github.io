@@ -12,7 +12,7 @@ export default function Projects() {
       title="Things I've built"
       intro="A few projects I've designed, built and shipped, solo and as part of a team."
     >
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2">
         {projects.map((p, i) => (
           <Reveal
             as="article"
@@ -39,23 +39,30 @@ export default function Projects() {
                 ))}
               </ul>
               <div className="mt-6 flex gap-3">
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition hover:opacity-90"
-                >
-                  Live demo <LuExternalLink className="size-4" aria-hidden="true" />
-                  <span className="sr-only"> of {p.title}</span>
-                </a>
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Live demo of ${p.title}`}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition hover:opacity-90"
+                  >
+                    Live demo <LuExternalLink className="size-4" aria-hidden="true" />
+                  </a>
+                )}
+                {/* aria-label: hidden " for X" text inside a flex button loses its leading space ("Codefor X") */}
                 <a
                   href={p.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold text-fg transition hover:border-accent hover:text-accent"
+                  aria-label={`Code for ${p.title} on GitHub`}
+                  className={`inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
+                    p.live
+                      ? 'border border-line text-fg hover:border-accent hover:text-accent'
+                      : 'bg-accent text-on-accent hover:opacity-90' // only button: make it the main one
+                  }`}
                 >
                   <FaGithub className="size-4" aria-hidden="true" /> Code
-                  <span className="sr-only"> for {p.title}</span>
                 </a>
               </div>
             </div>

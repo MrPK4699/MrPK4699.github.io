@@ -150,7 +150,16 @@ export const experience = [
   },
 ];
 
+// `live` is optional: leave it out and the card shows only the "Code" button.
 export const projects = [
+  {
+    title: 'GeoWeather',
+    description:
+      'A live weather app for any city: search with autocomplete or use your location, see hourly and 5-day forecasts, compare the last and next 7 days on a temperature & rain chart, and check a rain-radar map. The background animates to match the real weather.',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'TanStack Query', 'Leaflet', 'OpenWeather API'],
+    image: '/assets/projects-imgs/GeoWeather.png',
+    github: 'https://github.com/MrPK4699/GeoWeather',
+  },
   {
     title: 'Task Manager',
     description:

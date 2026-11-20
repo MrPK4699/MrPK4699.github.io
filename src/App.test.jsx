@@ -12,7 +12,7 @@ test('renders the main portfolio sections', () => {
   for (const name of [/developer who cares about the details/i, /technologies i work with/i, /things i've built/i, /activity and stats/i, /let's build something together/i]) {
     expect(screen.getByRole('heading', { name })).toBeInTheDocument();
   }
-  expect(within(document.getElementById('projects')).getAllByRole('article')).toHaveLength(3);
+  expect(within(document.getElementById('projects')).getAllByRole('article')).toHaveLength(4);
   expect(screen.getByRole('heading', { name: /where i've worked/i })).toBeInTheDocument();
 });
 
@@ -84,8 +84,23 @@ test('hero photo shows calculated experience, skills and projects badges', () =>
   render(<App />);
   const badge = (label) => document.querySelector(`[data-stat="${label}"]`);
   expect(badge('Skills')).toHaveTextContent(/^\d+\+Skills$/);
-  expect(badge('Projects')).toHaveTextContent('3+Projects');
+  expect(badge('Projects')).toHaveTextContent('4+Projects');
   expect(document.querySelector('[data-stat$="exp."]')).toHaveTextContent(/^\d+\+(Year|Years|Month|Months) exp\.$/);
+});
+
+test('GeoWeather is listed first, with only a Code button (no live demo yet)', () => {
+  render(<App />);
+  const cards = within(document.getElementById('projects')).getAllByRole('article');
+  const geo = within(cards[0]);
+  expect(geo.getByRole('heading', { name: 'GeoWeather' })).toBeInTheDocument();
+  expect(geo.getByRole('img', { name: /screenshot of geoweather/i })).toHaveAttribute('src', '/assets/projects-imgs/GeoWeather.png');
+  expect(geo.queryByRole('link', { name: /live demo/i })).not.toBeInTheDocument();
+  expect(geo.getByRole('link', { name: /code for geoweather/i })).toHaveAttribute('href', 'https://github.com/MrPK4699/GeoWeather');
+  // The other projects still have both buttons
+  for (const card of cards.slice(1)) {
+    expect(within(card).getByRole('link', { name: /live demo/i })).toBeInTheDocument();
+    expect(within(card).getByRole('link', { name: /code for/i })).toBeInTheDocument();
+  }
 });
 
 test('nav includes an Experience link', () => {
