@@ -88,16 +88,16 @@ test('hero photo shows calculated experience, skills and projects badges', () =>
   expect(document.querySelector('[data-stat$="exp."]')).toHaveTextContent(/^\d+\+(Year|Years|Month|Months) exp\.$/);
 });
 
-test('GeoWeather is listed first, with only a Code button (no live demo yet)', () => {
+test('GeoWeather is listed first, with its live demo and code links', () => {
   render(<App />);
   const cards = within(document.getElementById('projects')).getAllByRole('article');
   const geo = within(cards[0]);
   expect(geo.getByRole('heading', { name: 'GeoWeather' })).toBeInTheDocument();
   expect(geo.getByRole('img', { name: /screenshot of geoweather/i })).toHaveAttribute('src', '/assets/projects-imgs/GeoWeather.png');
-  expect(geo.queryByRole('link', { name: /live demo/i })).not.toBeInTheDocument();
+  expect(geo.getByRole('link', { name: /live demo of geoweather/i })).toHaveAttribute('href', 'https://geo-weather-iota.vercel.app/');
   expect(geo.getByRole('link', { name: /code for geoweather/i })).toHaveAttribute('href', 'https://github.com/MrPK4699/GeoWeather');
-  // The other projects still have both buttons
-  for (const card of cards.slice(1)) {
+  // Every project has both buttons
+  for (const card of cards) {
     expect(within(card).getByRole('link', { name: /live demo/i })).toBeInTheDocument();
     expect(within(card).getByRole('link', { name: /code for/i })).toBeInTheDocument();
   }

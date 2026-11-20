@@ -159,6 +159,7 @@ export const projects = [
     tech: ['React', 'Vite', 'Tailwind CSS', 'TanStack Query', 'Leaflet', 'OpenWeather API'],
     image: '/assets/projects-imgs/GeoWeather.png',
     github: 'https://github.com/MrPK4699/GeoWeather',
+    live: 'https://geo-weather-iota.vercel.app/',
   },
   {
     title: 'Task Manager',
